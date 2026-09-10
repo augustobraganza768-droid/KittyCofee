@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    background-color:#ffe5ec;
+    font-family:Crafty Girls, cursive;
+    color:#f26a8d;
+    min-height: 100vh;
+}
+h1 {
+    color:#d972ff;
+    font-size: 2.9rem;
+    text-align: center;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 0 #ffffff;
+}
+
+header {
+    padding:1.5rem 2rem;
+    border-bottom:1px solid #9046cf;
+      background-color: rgba(255, 255, 255, 0.45);
+    text-align: center;
+}
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+nav a {
+    color:#d16bf7;
+text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+nav a:hover {
+    color: #9046cf;
+    transform: scale(1.1);
+}
+main {
+    padding: 3rem 2rem;
+    max-widht: 800px;
+    margin: 0 auto;
+}
+
+.metodo-titulo {
+    font-size: 1.1rem;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  margin-bottom:0.25rem;
+  color:#9046cf;
+}
+.precio {
+    font-weight:bold;
+    color:#9046cf;
+    font-size: 1.2rem;
+}
+footer {
+    font-size: 1.0rem;
+    color:#2e294e;
+    font-family: Georgia, serif;
+}
+.imagen-Kitty {
+display: block;
+    width: 180px;
+    max-width: 80%;
+    margin: 2rem auto;
+    transition: 0.4s ease;
+}
+.imagen-Kitty:hover {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+.horarios { 
+    margin: 30px auto;
+    max-width: 500px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(144, 70, 207, 0.15);
+    text-align: center;
+}
+#contador-tazas {
+   font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff7edb;
+    background-color: #ffffff;
+    padding: 0.4rem 1rem;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(255, 126, 219, 0.2);
+}
+
+#boton-reservar {
+     display: block;
+    margin: 1.5rem auto 0;
+    padding: 0.7rem 1.5rem;
+    
+    background: linear-gradient(
+        135deg,
+        #d972ff,
+        #9046cf
+    );
+
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+
+    font-family: "Crafty Girls", cursive;
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 15px rgba(144, 70, 207, 0.3);
+
+    transition: all 0.3s ease;
+}
+/* Efecto al pasar el mouse */
+
+#boton-reservar:hover {
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow:
+        0 8px 20px rgba(144, 70, 207, 0.4);
+}
+/* Efecto al hacer click */
+#boton-reservar:active {
+    transform: scale(0.95);
+}
+/* =========================
+   BOTON SIN CUPOS
+========================= */
+
+#boton-reservar:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    margin-top: 3rem;
+    padding: 1.5rem;
+
+    font-size: 1rem;
+    color: #2e294e;
+
+    font-family: Georgia, serif;
+
+    text-align: center;
+
+    border-top: 1px solid #d972ff;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================
+   RESPONSIVE - CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .imagen-Kitty {
+        width: 150px;
+    }
+
+    .horarios {
+        margin: 20px auto;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 0.7rem;
+    }
+
+    #boton-reservar {
+        width: 80%;
+    }
+}

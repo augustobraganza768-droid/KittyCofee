@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Kawaii Sanrio 🎀</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Fredoka & Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fdf0f5;
+            background-image: radial-gradient(#fbcfe8 1.5px, transparent 1.5px), radial-gradient(#fbcfe8 1.5px, #fdf0f5 1.5px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+        }
+
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fce7f3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f472b6;
+            border-radius: 20px;
+        }
+
+        /* Float Animation for Floating Elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-soft {
+            animation: pulse-soft 2.5s ease-in-out infinite;
+        }
+
+        /* Kawaii Cards Hover Effect */
+        .kawaii-card {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .kawaii-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(244, 114, 182, 0.25), 0 10px 10px -5px rgba(244, 114, 182, 0.15);
+        }
+
+        /* Custom Buttons */
+        .btn-kawaii {
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 0px rgba(219, 39, 119, 0.3);
+        }
+        .btn-kawaii:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0px rgba(219, 39, 119, 0.3);
+        }
+
+        .bg-pastel-pink { background-color: #ffe4e6; }
+        .bg-pastel-purple { background-color: #f3e8ff; }
+        .bg-pastel-yellow { background-color: #fef9c3; }
+        .bg-pastel-blue { background-color: #e0f2fe; }
+        .bg-pastel-mint { background-color: #dcfce7; }
+    </style>
+</head>
+<body class="text-gray-700 min-h-screen flex flex-col antialiased">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b-4 border-pink-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                
+                <!-- Logo & Brand -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="resetFilters()">
+                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center border-2 border-pink-300 text-2xl shadow-inner animate-float">
+                        🎀
+                    </div>
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-bold text-pink-500 tracking-wide flex items-center gap-2">
+                            Sanrio World <span class="text-xs bg-pink-200 text-pink-700 font-semibold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Toys</span>
+                        </h1>
+                        <p class="text-xs text-pink-400 font-medium">Catálogo Oficial de Juguetes & Coleccionables ✨</p>
+                    </div>
+                </div>
+
+                <!-- Search Input Bar -->
+                <div class="w-full md:w-96 relative">
+                    <input type="text" id="searchInput" oninput="applyFilters()" 
+                        placeholder="Buscar juguete, personaje..." 
+                        class="w-full pl-10 pr-10 py-2.5 bg-pink-50/80 border-2 border-pink-200 rounded-full focus:outline-none focus:border-pink-400 text-sm font-medium placeholder-pink-300 text-pink-800 transition-all shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-pink-400"></i>
+                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3.5 top-2.5 text-pink-300 hover:text-pink-500">
+                        <i class="fa-solid fa-circle-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Quick Stats / Wishlist Counter -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleWishlistFilter()" id="wishlistToggleBtn" class="flex items-center gap-2 px-4 py-2 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full border border-pink-300 font-semibold text-sm transition-all shadow-sm">
+                        <i class="fa-solid fa-heart text-pink-500"></i>
+                        <span>Mis Favoritos</span>
+                        <span id="favBadge" class="bg-pink-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="bg-gradient-to-r from-pink-200 via-purple-200 to-indigo-100 rounded-3xl p-6 md:p-8 border-4 border-white shadow-lg relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
+            
+            <div class="z-10 text-center md:text-left max-w-lg mb-6 md:mb-0">
+                <span class="inline-block px-3 py-1 bg-white/80 backdrop-blur text-pink-600 text-xs font-bold rounded-full mb-3 shadow-xs">
+                    🌸 ¡Mundo Mágico de Sanrio!
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-pink-600 leading-tight">
+                    Encuentra tus juguetes kawaii favoritos 💕
+                </h2>
+                <p class="text-sm text-pink-800/80 mt-2 font-medium">
+                    Explora peluches, figuras de colección, accesorios y sets sorpresa de Hello Kitty y todos sus amigos.
+                </p>
+                <div class="mt-4 flex flex-wrap justify-center md:justify-start gap-2 text-xs font-bold text-pink-700">
+                    <span class="bg-white/90 px-3 py-1 rounded-full shadow-xs">✨ 100% Originales</span>
+                    <span class="bg-white/90 px-3 py-1 rounded-full shadow-xs">🧸 Ediciones Especiales</span>
+                    <span class="bg-white/90 px-3 py-1 rounded-full shadow-xs">📲 Pedidos por WhatsApp</span>
+                </div>
+            </div>
+
+            <!-- Banner Decorative Avatars -->
+            <div class="flex items-center justify-center gap-2 z-10">
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full p-2 shadow-md border-2 border-pink-300 transform -rotate-6 animate-float">
+                  <!-- Hello Kitty SVG Badge -->
+<div class="w-full h-full flex items-center justify-center">
+    <svg 
+        viewBox="0 0 200 200" 
+        class="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+
+        <!-- Cabeza -->
+        <path 
+            d="
+                M 38 75
+                Q 30 52 42 30
+                Q 54 12 76 25
+                Q 100 12 124 25
+                Q 146 12 158 30
+                Q 170 52 162 75
+                Q 178 100 166 132
+                Q 154 164 100 170
+                Q 46 164 34 132
+                Q 22 100 38 75
+                Z
+            "
+            fill="#ffffff"
+            stroke="#333333"
+            stroke-width="4"
+            stroke-linejoin="round"
+        />
+
+        <!-- Oreja izquierda -->
+        <path
+            d="M 42 50 L 31 22 Q 30 16 36 18 L 70 38 Z"
+            fill="#ffffff"
+            stroke="#333333"
+            stroke-width="4"
+            stroke-linejoin="round"
+        />
+
+        <!-- Oreja derecha -->
+        <path
+            d="M 158 50 L 169 22 Q 170 16 164 18 L 130 38 Z"
+            fill="#ffffff"
+            stroke="#333333"
+            stroke-width="4"
+            stroke-linejoin="round"
+        />
+
+        <!-- Ojo izquierdo -->
+        <ellipse
+            cx="70"
+            cy="88"
+            rx="6"
+            ry="9"
+            fill="#333333"
+        />
+
+        <!-- Ojo derecho -->
+        <ellipse
+            cx="130"
+            cy="88"
+            rx="6"
+            ry="9"
+            fill="#333333"
+        />
+
+        <!-- Nariz amarilla -->
+        <ellipse
+            cx="100"
+            cy="106"
+            rx="9"
+            ry="7"
+            fill="#FFD21F"
+            stroke="#333333"
+            stroke-width="2.5"
+        />
+
+        <!-- Bigotes izquierdos -->
+        <path
+            d="M 43 103 L 17 98"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M 42 112 L 14 112"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M 43 121 L 17 128"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <!-- Bigotes derechos -->
+        <path
+            d="M 157 103 L 183 98"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M 158 112 L 186 112"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M 157 121 L 183 128"
+            fill="none"
+            stroke="#333333"
+            stroke-width="3"
+            stroke-linecap="round"
+        />
+
+        <!-- Moño rojo -->
+        <!-- Parte izquierda -->
+        <path
+            d="
+                M 151 53
+                Q 128 25 116 40
+                Q 108 53 128 65
+                Q 143 70 151 53
+                Z
+            "
+            fill="#ff4d6d"
+            stroke="#333333"
+            stroke-width="3"
+        />
+
+        <!-- Parte derecha -->
+        <path
+            d="
+                M 151 53
+                Q 174 25 186 40
+                Q 194 53 174 65
+                Q 159 70 151 53
+                Z
+            "
+            fill="#ff4d6d"
+            stroke="#333333"
+            stroke-width="3"
+        />
+
+        <!-- Centro del moño -->
+        <circle
+            cx="151"
+            cy="53"
+            r="9"
+            fill="#ff4d6d"
+            stroke="#333333"
+            stroke-width="3"
+        />
+
+        <!-- Brillo del moño -->
+        <circle
+            cx="148"
+            cy="50"
+            r="2.5"
+            fill="#ffffff"
+        />
+
+    </svg>
+</div> 
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full p-2 shadow-md border-2 border-purple-300 transform rotate-6 animate-float" style="animation-delay: 0.5s;">
+                    <!-- Kuromi SVG Badge -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="58" rx="32" ry="26" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 22 45 Q 5 15 32 32 Z" fill="#333" stroke="#333" stroke-width="2"/>
+                        <path d="M 78 45 Q 95 15 68 32 Z" fill="#333" stroke="#333" stroke-width="2"/>
+                        <circle cx="12" cy="18" r="4" fill="#ff4d6d"/>
+                        <circle cx="88" cy="18" r="4" fill="#ff4d6d"/>
+                        <path d="M 38 52 L 44 58 L 38 60" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 62 52 L 56 58 L 62 60" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <polygon points="50,30 46,38 54,38" fill="#ff4d6d"/>
+                    </svg>
+                </div>
+                <div class="w-20 h-20 md:w-24 md:h-24 bg-white/90 rounded-full p-2 shadow-md border-2 border-blue-200 transform -rotate-3 animate-float" style="animation-delay: 1s;">
+                    <!-- Cinnamoroll SVG Badge -->
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="55" rx="30" ry="22" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 22 50 C -5 40 -5 70 20 62" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 78 50 C 105 40 105 70 80 62" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="38" cy="53" rx="3" ry="4" fill="#3a86ff"/>
+                        <ellipse cx="62" cy="53" rx="3" ry="4" fill="#3a86ff"/>
+                        <ellipse cx="30" cy="58" rx="5" ry="3" fill="#ffb4a2"/>
+                        <ellipse cx="70" cy="58" rx="5" ry="3" fill="#ffb4a2"/>
+                        <path d="M 46 58 Q 50 62 54 58" fill="none" stroke="#3a86ff" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Background Sparkles -->
+            <div class="absolute -bottom-6 -left-6 text-6xl opacity-20 pointer-events-none">🌸</div>
+            <div class="absolute -top-6 -right-6 text-6xl opacity-20 pointer-events-none">✨</div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+        
+        <!-- Filter Header & Pills -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                    <i class="fa-solid fa-filter text-pink-400 text-sm"></i> Categorías de Personajes
+                </h3>
+                <span id="resultsCount" class="text-xs font-semibold text-pink-500 bg-pink-100 px-3 py-1 rounded-full">
+                    Cargando juguetes...
+                </span>
+            </div>
+
+            <!-- Filter Buttons Horizontal Scroll -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-3 pt-1 scrollbar-none" id="characterFilterContainer">
+                <!-- Dynamically populated or rendered -->
+            </div>
+        </div>
+
+        <div id="toyGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Cards will be dynamically generated by JS -->
+        </div>
+
+        <!-- Empty State Message -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white/60 rounded-3xl border-2 border-dashed border-pink-200 mt-4">
+            <div class="text-6xl mb-4 animate-bounce">🔍</div>
+            <h3 class="text-2xl font-bold text-pink-500 mb-2">¡Ups! No encontramos ese juguete</h3>
+            <p class="text-gray-500 text-sm max-w-md mx-auto mb-6">
+                Intenta buscar con otro nombre o selecciona la categoría "Todos" para volver a ver la colección completa.
+            </p>
+            <button onclick="resetFilters()" class="px-6 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-full shadow-md transition-all text-sm">
+                Ver todos los juguetes ✨
+            </button>
+        </div>
+    </main>
+
+    <div id="productModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl border-4 border-pink-200 shadow-2xl max-w-2xl w-full overflow-hidden transform scale-95 transition-transform duration-300 relative" id="modalContainer">
+            
+            <!-- Close Modal Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full flex items-center justify-center font-bold transition-all shadow-sm">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex flex-col md:flex-row">
+                <!-- Modal Image / SVG Container -->
+                <div id="modalImageBg" class="w-full md:w-1/2 p-8 flex items-center justify-center min-h-[260px] relative overflow-hidden">
+                    <div id="modalSvgContainer" class="w-48 h-48 drop-shadow-xl animate-pulse-soft"></div>
+                    <span id="modalCategoryBadge" class="absolute top-4 left-4 bg-white/90 text-pink-600 text-xs font-extrabold px-3 py-1 rounded-full shadow-sm"></span>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="w-full md:w-1/2 p-6 flex flex-col justify-between bg-white">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span id="modalStockBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full"></span>
+                            <button id="modalFavBtn" class="text-gray-300 hover:text-pink-500 text-xl transition-colors">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <h3 id="modalTitle" class="text-2xl font-extrabold text-gray-800 mb-2 leading-tight"></h3>
+                        <p id="modalPrice" class="text-xl font-bold text-pink-500 mb-4"></p>
+                        
+                        <div class="border-t border-pink-100 my-3"></div>
+
+                        <p class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Descripción:</p>
+                        <p id="modalDescription" class="text-sm text-gray-600 leading-relaxed mb-6"></p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <a id="modalWhatsappLink" href="#" target="_blank" class="w-full py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-2xl flex items-center justify-center gap-2 text-sm shadow-md hover:shadow-lg transition-all btn-kawaii">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            Consultar por WhatsApp
+                        </a>
+                        <button onclick="closeModal()" class="w-full py-2.5 bg-pink-50 hover:bg-pink-100 text-pink-600 font-semibold rounded-2xl text-xs transition-colors">
+                            Seguir explorando
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-white border-t-2 border-pink-200 mt-12 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center items-center gap-2 mb-3">
+                <span class="text-lg">🎀</span>
+                <span class="font-bold text-pink-500 text-sm">Sanrio Toy Catalog</span>
+                <span class="text-lg">✨</span>
+            </div>
+            <p class="mb-2">Todas las imágenes e ilustraciones son meramente representativas y creadas para exhibir el catálogo.</p>
+            <p class="text-pink-400 font-medium">© 2026 Catálogo Kawaii Sanrio — Hecho con amor 💕</p>
+        </div>
+    </footer>
+
+    <script>
+        const SANRIO_TOYS = [
+            {
+                id: "hk-01",
+                name: "Peluche Hello Kitty Clásica Red Bow",
+                character: "Hello Kitty",
+                category: "Peluches",
+                price: "$24.99",
+                description: "Edición clásica suave con su icónico vestidito azul y moño rojo acolchado. Ideal para abrazar o decorar la habitación.",
+                stock: "Disponible",
+                isNew: true,
+                badgeBg: "bg-red-100 text-red-600",
+                bgColor: "bg-pink-100",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="55" rx="36" ry="28" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <polygon points="18,35 12,12 35,26" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <polygon points="82,35 88,12 65,26" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <circle cx="36" cy="53" r="4" fill="#333"/>
+                        <circle cx="64" cy="53" r="4" fill="#333"/>
+                        <ellipse cx="50" cy="61" rx="4.5" ry="3" fill="#ffb703"/>
+                        <path d="M 16 52 L 3 50 M 16 57 L 3 59 M 84 52 L 97 50 M 84 57 L 97 59" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 70 30 Q 82 18 86 30 Q 82 40 70 30 Z" fill="#ff4d6d" stroke="#333" stroke-width="2.5"/>
+                        <path d="M 70 30 Q 58 18 54 30 Q 58 40 70 30 Z" fill="#ff4d6d" stroke="#333" stroke-width="2.5"/>
+                        <circle cx="70" cy="30" r="4.5" fill="#ffffff" stroke="#333" stroke-width="2"/>
+                        <path d="M 30 82 Q 50 78 70 82" fill="none" stroke="#ff4d6d" stroke-width="12" stroke-linecap="round"/>
+                    </svg>`
+            },
+            {
+                id: "kr-02",
+                name: "Figura Coleccionable Kuromi Gothic Lolita",
+                character: "Kuromi",
+                category: "Figuras",
+                price: "$29.99",
+                description: "Figura articulada con detalles de vestidito violeta oscuro, gorro de bufón característico con calavera rosa y detalles de encaje.",
+                stock: "Pocas Unidades",
+                isNew: false,
+                badgeBg: "bg-purple-100 text-purple-600",
+                bgColor: "bg-purple-100",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="58" rx="34" ry="26" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 22 45 Q 2 12 32 30 Z" fill="#2b2d42" stroke="#333" stroke-width="2.5"/>
+                        <path d="M 78 45 Q 98 12 68 30 Z" fill="#2b2d42" stroke="#333" stroke-width="2.5"/>
+                        <circle cx="10" cy="15" r="4.5" fill="#ff4d6d"/>
+                        <circle cx="90" cy="15" r="4.5" fill="#ff4d6d"/>
+                        <path d="M 36 54 L 42 60 L 36 62" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M 64 54 L 58 60 L 64 62" fill="none" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+                        <polygon points="50,28 45,36 55,36" fill="#ff4d6d"/>
+                        <ellipse cx="50" cy="25" rx="5" ry="4" fill="#ff4d6d"/>
+                    </svg>`
+            },
+            {
+                id: "cn-03",
+                name: "Peluche Orejitas Cinnamoroll Cloud Soft",
+                character: "Cinnamoroll",
+                category: "Peluches",
+                price: "$26.50",
+                description: "Súper suave y esponjoso como una nube. Incluye sus largas orejas flexibles y su tierna colita en espiral.",
+                stock: "Disponible",
+                isNew: true,
+                badgeBg: "bg-blue-100 text-blue-600",
+                bgColor: "bg-blue-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="56" rx="30" ry="22" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 22 50 C -8 38 -8 72 18 64" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <path d="M 78 50 C 108 38 108 72 82 64" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="38" cy="54" rx="3.5" ry="4.5" fill="#0077b6"/>
+                        <ellipse cx="62" cy="54" rx="3.5" ry="4.5" fill="#0077b6"/>
+                        <ellipse cx="28" cy="60" rx="5.5" ry="3.5" fill="#ffb4a2"/>
+                        <ellipse cx="72" cy="60" rx="5.5" ry="3.5" fill="#ffb4a2"/>
+                        <path d="M 46 60 Q 50 64 54 60" fill="none" stroke="#0077b6" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>`
+            },
+            {
+                id: "mm-04",
+                name: "Bolso de Peluche My Melody Sweet Hood",
+                character: "My Melody",
+                category: "Accesorios",
+                price: "$22.00",
+                description: "Bolso de mano acolchado con la cara de My Melody en capucha rosa pastel y lazo de flor lateral.",
+                stock: "Disponible",
+                isNew: false,
+                badgeBg: "bg-pink-100 text-pink-600",
+                bgColor: "bg-pink-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <path d="M 25 50 Q 18 10 38 25 Q 50 30 50 50 Z" fill="#ffb7c5" stroke="#333" stroke-width="3"/>
+                        <path d="M 75 50 Q 82 10 62 25 Q 50 30 50 50 Z" fill="#ffb7c5" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="50" cy="58" rx="32" ry="25" fill="#ffb7c5" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="50" cy="62" rx="24" ry="18" fill="#ffffff"/>
+                        <ellipse cx="40" cy="60" rx="3" ry="4" fill="#333"/>
+                        <ellipse cx="60" cy="60" rx="3" ry="4" fill="#333"/>
+                        <ellipse cx="50" cy="65" rx="3.5" ry="2.5" fill="#ffb703"/>
+                        <circle cx="32" cy="42" r="6" fill="#ffffff" stroke="#333" stroke-width="2"/>
+                    </svg>`
+            },
+            {
+                id: "purin-05",
+                name: "Lámpara LED Pompompurin Night Glow",
+                character: "Pompompurin",
+                category: "Decoración",
+                price: "$19.99",
+                description: "Luz de noche recargable de silicona suave al tacto con 3 niveles de brillo. Trae su clásica boina marrón.",
+                stock: "Disponible",
+                isNew: true,
+                badgeBg: "bg-yellow-100 text-yellow-700",
+                bgColor: "bg-yellow-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="58" rx="34" ry="28" fill="#ffeedd" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="20" cy="52" rx="8" ry="14" fill="#ffeedd" stroke="#333" stroke-width="3" transform="rotate(-15 20 52)"/>
+                        <ellipse cx="80" cy="52" rx="8" ry="14" fill="#ffeedd" stroke="#333" stroke-width="3" transform="rotate(15 80 52)"/>
+                        <ellipse cx="50" cy="31" rx="14" ry="6" fill="#6b4226" stroke="#333" stroke-width="2.5"/>
+                        <ellipse cx="50" cy="26" rx="4" ry="3" fill="#6b4226"/>
+                        <ellipse cx="38" cy="56" rx="3" ry="4" fill="#333"/>
+                        <ellipse cx="62" cy="56" rx="3" ry="4" fill="#333"/>
+                        <path d="M 47 62 L 50 65 L 53 62 L 50 60 Z" fill="#333"/>
+                        <path d="M 45 66 Q 50 70 55 66" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+                    </svg>`
+            },
+            {
+                id: "poch-06",
+                name: "Set Papelería Pochacco Skate Club",
+                character: "Pochacco",
+                category: "Papelería",
+                price: "$14.50",
+                description: "Incluye libreta de espiral, 4 bolígrafos de colores y planilla de stickers de Pochacco haciendo skateboarding.",
+                stock: "Disponible",
+                isNew: false,
+                badgeBg: "bg-emerald-100 text-emerald-600",
+                bgColor: "bg-emerald-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="56" rx="30" ry="25" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <ellipse cx="22" cy="48" rx="9" ry="16" fill="#333" transform="rotate(-20 22 48)"/>
+                        <ellipse cx="78" cy="48" rx="9" ry="16" fill="#333" transform="rotate(20 78 48)"/>
+                        <ellipse cx="38" cy="54" rx="3" ry="4" fill="#333"/>
+                        <ellipse cx="62" cy="54" rx="3" ry="4" fill="#333"/>
+                        <ellipse cx="50" cy="62" rx="4.5" ry="3" fill="#333"/>
+                        <ellipse cx="32" cy="60" rx="4" ry="2.5" fill="#ffb4a2"/>
+                        <ellipse cx="68" cy="60" rx="4" ry="2.5" fill="#ffb4a2"/>
+                    </svg>`
+            },
+            {
+                id: "kero-07",
+                name: "Mini Peluche Keroppi Lilypad Charm",
+                character: "Keroppi",
+                category: "Llaveros",
+                price: "$11.99",
+                description: "Llavero de felpa acolchada de la ranita Keroppi con enganche metálico para mochila o llaves.",
+                stock: "Agotado",
+                isNew: false,
+                badgeBg: "bg-green-100 text-green-700",
+                bgColor: "bg-green-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <ellipse cx="50" cy="62" rx="32" ry="24" fill="#90be6d" stroke="#333" stroke-width="3"/>
+                        <circle cx="34" cy="38" r="14" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <circle cx="66" cy="38" r="14" fill="#ffffff" stroke="#333" stroke-width="3"/>
+                        <circle cx="34" cy="38" r="5" fill="#333"/>
+                        <circle cx="66" cy="38" r="5" fill="#333"/>
+                        <ellipse cx="28" cy="64" rx="5" ry="3" fill="#ff99c8"/>
+                        <ellipse cx="72" cy="64" rx="5" ry="3" fill="#ff99c8"/>
+                        <path d="M 42 66 Q 50 76 58 66" fill="none" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M 40 82 L 60 82" stroke="#ff4d6d" stroke-width="8" stroke-linecap="round"/>
+                    </svg>`
+            },
+            {
+                id: "box-08",
+                name: "Caja Sorpresa Blind Box Sanrio Sweet Dreams",
+                character: "Hello Kitty",
+                category: "Sorpresa",
+                price: "$16.00",
+                description: "Caja ciega coleccionable. Incluye 1 mini figura aleatoria de la colección Sanrio durmiendo en una nube.",
+                stock: "Disponible",
+                isNew: true,
+                badgeBg: "bg-pink-100 text-pink-600",
+                bgColor: "bg-purple-50",
+                svg: `
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <rect x="25" y="35" width="50" height="48" rx="8" fill="#f472b6" stroke="#333" stroke-width="3"/>
+                        <path d="M 20 35 L 50 18 L 80 35 Z" fill="#fb7185" stroke="#333" stroke-width="3"/>
+                        <path d="M 50 18 L 50 83" stroke="#ffffff" stroke-width="4" stroke-dasharray="4,4"/>
+                        <circle cx="50" cy="55" r="12" fill="#ffffff" stroke="#333" stroke-width="2"/>
+                        <text x="50" y="61" font-size="14" font-weight="bold" text-anchor="middle" fill="#f472b6">?</text>
+                    </svg>`
+            }
+        ];
+
+        const CHARACTERS = ["Todos", "Hello Kitty", "Kuromi", "Cinnamoroll", "My Melody", "Pompompurin", "Pochacco", "Keroppi"];
+
+        let activeFilter = "Todos";
+        let searchQuery = "";
+        let favorites = JSON.parse(localStorage.getItem('sanrio_favs') || '[]');
+        let showOnlyFavs = false;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFilterButtons();
+            applyFilters();
+            updateFavBadge();
+        });
+
+        function renderFilterButtons() {
+            const container = document.getElementById('characterFilterContainer');
+            container.innerHTML = CHARACTERS.map(char => {
+                const isActive = activeFilter === char && !showOnlyFavs;
+                const activeClasses = isActive 
+                    ? 'bg-pink-500 text-white shadow-md border-pink-500 font-bold scale-105' 
+                    : 'bg-white text-gray-600 border-pink-200 hover:bg-pink-50 hover:border-pink-300';
+                
+                return `
+                    <button onclick="setFilter('${char}')" 
+                        class="px-4 py-2 rounded-full border-2 text-xs transition-all duration-200 whitespace-nowrap flex items-center gap-1.5 ${activeClasses}">
+                        ${getCharacterEmoji(char)} ${char}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function getCharacterEmoji(char) {
+            switch(char) {
+                case 'Hello Kitty': return '🎀';
+                case 'Kuromi': return '🖤';
+                case 'Cinnamoroll': return '☁️';
+                case 'My Melody': return '🌸';
+                case 'Pompompurin': return '🍮';
+                case 'Pochacco': return '🐶';
+                case 'Keroppi': return '🐸';
+                default: return '✨';
+            }
+        }
+
+        function setFilter(char) {
+            activeFilter = char;
+            showOnlyFavs = false;
+            updateWishlistBtnUI();
+            renderFilterButtons();
+            applyFilters();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            searchQuery = '';
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            applyFilters();
+        }
+
+        function resetFilters() {
+            activeFilter = "Todos";
+            showOnlyFavs = false;
+            clearSearch();
+            renderFilterButtons();
+            updateWishlistBtnUI();
+        }
+
+        function toggleWishlistFilter() {
+            showOnlyFavs = !showOnlyFavs;
+            updateWishlistBtnUI();
+            renderFilterButtons();
+            applyFilters();
+        }
+
+        function updateWishlistBtnUI() {
+            const btn = document.getElementById('wishlistToggleBtn');
+            if (showOnlyFavs) {
+                btn.classList.remove('bg-pink-100', 'text-pink-600');
+                btn.classList.add('bg-pink-500', 'text-white', 'shadow-md');
+            } else {
+                btn.classList.add('bg-pink-100', 'text-pink-600');
+                btn.classList.remove('bg-pink-500', 'text-white', 'shadow-md');
+            }
+        }
+
+        function applyFilters() {
+            const searchInput = document.getElementById('searchInput');
+            searchQuery = searchInput.value.toLowerCase().trim();
+
+            const clearBtn = document.getElementById('clearSearchBtn');
+            if (searchQuery.length > 0) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+
+            const filtered = SANRIO_TOYS.filter(toy => {
+                const matchesChar = activeFilter === "Todos" || toy.character === activeFilter;
+                const matchesSearch = toy.name.toLowerCase().includes(searchQuery) || 
+                                     toy.character.toLowerCase().includes(searchQuery) ||
+                                     toy.category.toLowerCase().includes(searchQuery);
+                const matchesFav = !showOnlyFavs || favorites.includes(toy.id);
+
+                return matchesChar && matchesSearch && matchesFav;
+            });
+
+            renderGrid(filtered);
+        }
+
+        function renderGrid(items) {
+            const grid = document.getElementById('toyGrid');
+            const emptyState = document.getElementById('emptyState');
+            const countLabel = document.getElementById('resultsCount');
+
+            countLabel.textContent = `${items.length} ${items.length === 1 ? 'juguete' : 'juguetes'}`;
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = items.map(toy => {
+                const isFav = favorites.includes(toy.id);
+                const stockColor = toy.stock === 'Disponible' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700';
+
+                return `
+                    <div class="kawaii-card bg-white rounded-3xl border-2 border-pink-100 overflow-hidden flex flex-col justify-between shadow-sm relative group">
+                        
+                        <!-- Top Badges -->
+                        <div class="absolute top-3 left-3 right-3 z-10 flex items-center justify-between pointer-events-none">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider ${toy.badgeBg} shadow-xs">
+                                ${toy.character}
+                            </span>
+                            <button onclick="toggleFav(event, '${toy.id}')" 
+                                class="pointer-events-auto w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-sm shadow-sm transition-transform active:scale-125 ${isFav ? 'text-pink-500' : 'text-gray-300 hover:text-pink-400'}">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Illustrated SVG Frame -->
+                        <div onclick="openModal('${toy.id}')" class="${toy.bgColor} p-6 flex items-center justify-center h-48 cursor-pointer relative overflow-hidden group-hover:brightness-95 transition-all">
+                            <div class="w-32 h-32 transform group-hover:scale-110 transition-transform duration-300">
+                                ${toy.svg}
+                            </div>
+                            <div class="absolute inset-0 bg-pink-500/0 group-hover:bg-pink-500/10 transition-colors flex items-center justify-center">
+                                <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-pink-600 text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                                    <i class="fa-solid fa-eye mr-1"></i> Vista rápida
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Card Info Body -->
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[11px] font-semibold text-gray-400">${toy.category}</span>
+                                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${stockColor}">${toy.stock}</span>
+                                </div>
+                                <h4 onclick="openModal('${toy.id}')" class="font-bold text-gray-800 text-base leading-snug mb-2 hover:text-pink-500 cursor-pointer line-clamp-2">
+                                    ${toy.name}
+                                </h4>
+                            </div>
+
+                            <div class="mt-3 pt-3 border-t border-pink-50 flex items-center justify-between">
+                                <span class="text-lg font-extrabold text-pink-500">${toy.price}</span>
+                                <button onclick="openModal('${toy.id}')" class="px-3.5 py-1.5 bg-pink-100 hover:bg-pink-200 text-pink-600 rounded-full font-bold text-xs transition-colors">
+                                    Detalles ✨
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleFav(event, toyId) {
+            event.stopPropagation();
+            if (favorites.includes(toyId)) {
+                favorites = favorites.filter(id => id !== toyId);
+            } else {
+                favorites.push(toyId);
+            }
+            localStorage.setItem('sanrio_favs', JSON.stringify(favorites));
+            updateFavBadge();
+            applyFilters();
+        }
+
+        function updateFavBadge() {
+            const badge = document.getElementById('favBadge');
+            badge.textContent = favorites.length;
+        }
+
+        function openModal(toyId) {
+            const toy = SANRIO_TOYS.find(t => t.id === toyId);
+            if (!toy) return;
+
+            const modal = document.getElementById('productModal');
+            const modalContainer = document.getElementById('modalContainer');
+
+            document.getElementById('modalSvgContainer').innerHTML = toy.svg;
+            document.getElementById('modalImageBg').className = `${toy.bgColor} w-full md:w-1/2 p-8 flex items-center justify-center min-h-[260px] relative overflow-hidden`;
+            document.getElementById('modalCategoryBadge').textContent = `${getCharacterEmoji(toy.character)} ${toy.character}`;
+            
+            document.getElementById('modalTitle').textContent = toy.name;
+            document.getElementById('modalPrice').textContent = toy.price;
+            document.getElementById('modalDescription').textContent = toy.description;
+
+            const stockBadge = document.getElementById('modalStockBadge');
+            stockBadge.textContent = toy.stock;
+            stockBadge.className = toy.stock === 'Disponible' 
+                ? 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700' 
+                : 'text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-700';
+
+            // WhatsApp Pre-filled Link
+            const waMsg = encodeURIComponent(`¡Hola! 👋 Vi el juguete "${toy.name}" en el catálogo web y quisiera consultar disponiblidad/precio. ✨`);
+            document.getElementById('modalWhatsappLink').href = `https://wa.me/?text=${waMsg}`;
+
+            // Modal Favorite Button
+            const favBtn = document.getElementById('modalFavBtn');
+            const isFav = favorites.includes(toy.id);
+            favBtn.className = isFav ? 'text-pink-500 hover:text-pink-600 text-xl' : 'text-gray-300 hover:text-pink-400 text-xl';
+            favBtn.onclick = (e) => {
+                toggleFav(e, toy.id);
+                openModal(toy.id); // Refresh modal fav status
+            };
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-95');
+                modalContainer.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            const modalContainer = document.getElementById('modalContainer');
+
+            modalContainer.classList.remove('scale-100');
+            modalContainer.classList.add('scale-95');
+            modal.classList.add('opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close Modal when clicking background backdrop
+        document.getElementById('productModal').addEventListener('click', (e) => {
+            if (e.target.id === 'productModal') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
