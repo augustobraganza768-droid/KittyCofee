@@ -453,7 +453,6 @@ section > p {
     line-height: 1.9;
 }
 
-
 /* Perfil dentro de la descripción */
 
 .producto > p:not(.precio) b {
@@ -1119,6 +1118,7 @@ button {
     font-size: 1.5rem;
 }
 
+
 /* =========================================================
    RESPONSIVE - TABLET
 ========================================================= */
@@ -1126,10 +1126,6 @@ button {
 @media (max-width: 800px) {
 
     /* ---------- GENERAL ---------- */
-
-    * {
-        box-sizing: border-box;
-    }
 
     html,
     body {
@@ -1144,7 +1140,7 @@ button {
     }
 
     section {
-        margin-bottom: 3rem;
+        margin-bottom: 5rem;
     }
 
 
@@ -1152,14 +1148,13 @@ button {
 
     .header {
         min-height: auto;
-        padding: 2.5rem 1rem;
+        padding: 3rem 1.5rem;
     }
 
     .header-contenido {
         width: 100%;
         max-width: 700px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
+        padding: 2rem;
     }
 
     .titulo-cafe {
@@ -1167,72 +1162,57 @@ button {
     }
 
     .titulo-cafe h1 {
-        font-size: 2.6rem;
-        line-height: 1.2;
+        font-size: 3rem;
     }
 
     .titulo-cafe h2 {
         font-size: 0.9rem;
     }
 
-    .titulo-cafe p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
     .imagen-Kitty {
-        display: block;
         width: 100%;
         max-width: 500px;
         height: 280px;
         margin: 1.5rem auto 0;
-        object-fit: cover;
     }
 
 
     /* ---------- NAVBAR ---------- */
 
     .navbar {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-
-        gap: 0.5rem;
-
-        padding: 0.8rem 0.5rem;
+        gap: 1.5rem;
+        padding: 0.8rem 1rem;
     }
 
     .navbar a {
         font-size: 0.75rem;
-        padding: 0.4rem 0.5rem;
+        letter-spacing: 0.08rem;
     }
 
 
     /* ---------- PRESENTACIÓN ---------- */
 
     .presentacion {
-        width: 100%;
-        padding: 3rem 1rem;
+        min-height: auto;
+        padding: 4rem 1.5rem;
     }
 
     .presentacion p,
     .frase-cafe {
         width: 100%;
         max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-
-        line-height: 1.7;
+        padding: 1.8rem 2rem;
     }
 
 
     /* ---------- MÉTODOS ---------- */
 
     .seccion-metodos {
-        width: 100%;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
+    }
+
+    .seccion-metodos > p {
+        max-width: 650px;
     }
 
     .producto {
@@ -1242,34 +1222,32 @@ button {
         display: flex;
         flex-direction: column;
 
-        padding: 1.5rem;
-        margin: 1.5rem auto;
+        margin: 2rem auto;
+        padding: 2rem;
 
         gap: 1rem;
 
         text-align: center;
     }
 
-    .metodo-titulo {
-        margin-bottom: 0.5rem;
-        font-size: 1.6rem;
-        line-height: 1.3;
-    }
-
-    .producto > p:not(.precio) {
-        margin: 0;
-        line-height: 1.7;
-    }
-
     .producto .imagen-personaje-metodo {
         order: -1;
 
         width: 100%;
-        height: 250px;
-
-        margin-bottom: 0.5rem;
+        height: 280px;
 
         object-fit: cover;
+        margin-bottom: 0.5rem;
+    }
+
+    .metodo-titulo {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .producto > p:not(.precio) {
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
 
     .precio {
@@ -1277,9 +1255,8 @@ button {
     }
 
     .boton-agregar {
+        width: auto;
         align-self: center;
-        width: 100%;
-        max-width: 300px;
         margin-top: 0.5rem;
     }
 
@@ -1287,123 +1264,81 @@ button {
     /* ---------- PERSONAJES ---------- */
 
     .seccion-personajes {
-        width: 100%;
-        padding: 2rem 1rem;
+        padding: 0 1.5rem;
     }
 
     .personajes-grid {
-        width: 100%;
-
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
-        margin-top: 2rem;
     }
 
     .personaje {
-        width: 100%;
-        min-width: 0;
-
         padding: 1rem;
-        border-radius: 2rem;
-
-        overflow: hidden;
+        border-radius: 3rem;
     }
 
     .imagen-personaje {
-        display: block;
-        width: 100%;
-        height: 150px;
-
-        object-fit: cover;
+        height: 160px;
     }
 
     .personaje h3 {
         font-size: 1.1rem;
-        overflow-wrap: break-word;
     }
 
     .personaje p {
         font-size: 0.9rem;
-        line-height: 1.5;
-        overflow-wrap: break-word;
+    }
+
+
+    /* ---------- ZONA COMPRA ---------- */
+
+    .zona-compra {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+
+        padding: 3rem 1.5rem;
     }
 
 
     /* ---------- CARRITO ---------- */
 
     .seccion-carrito {
-        width: calc(100% - 2rem);
-
-        margin: 1rem auto;
-        padding: 2rem 1rem;
-
-        border-radius: 25px;
+        width: 100%;
+        padding: 2rem 1.5rem;
     }
 
     .item-carrito {
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        text-align: center;
-        gap: 0.7rem;
-    }
-
-    .resumen-carrito {
-        margin-top: 1rem;
-    }
-
-    #vaciar-carrito,
-    #finalizar-compra {
-        width: 100%;
-        max-width: 350px;
-
-        display: block;
-        margin: 0.5rem auto;
+        flex-wrap: wrap;
     }
 
 
     /* ---------- RESERVAS ---------- */
 
     .seccion-reservas {
-        width: calc(100% - 2rem);
-
-        margin: 1rem auto;
-        padding: 2rem 1rem;
-
-        border-radius: 25px;
+        width: 100%;
+        padding: 2rem 1.5rem;
     }
 
     #formulario-reserva {
         width: 100%;
         max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     #cantidad {
         width: 100%;
-        max-width: 100%;
-    }
-
-    #boton-reservar {
-        width: 100%;
-        max-width: 350px;
     }
 
 
     /* ---------- FOOTER ---------- */
 
     .footer {
-        width: 100%;
-        padding: 3rem 1rem;
+        padding: 3rem 1.5rem;
     }
 
     .footer-contenido {
-        display: flex;
         flex-direction: column;
         gap: 2rem;
     }
@@ -1414,18 +1349,11 @@ button {
     }
 
     .imagen-footer {
-        display: block;
-
         width: 100%;
         max-width: 450px;
         height: 220px;
-
-        margin: 0 auto;
-
-        object-fit: cover;
     }
-}
-
+ }
 
 /* =========================================================
    RESPONSIVE - CELULAR
@@ -1435,21 +1363,15 @@ button {
 
     /* ---------- GENERAL ---------- */
 
-    * {
-        box-sizing: border-box;
-    }
-
-    html {
-        width: 100%;
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-
+    html,
     body {
         width: 100%;
         max-width: 100%;
-        margin: 0;
         overflow-x: hidden;
+    }
+
+    body {
+        margin: 0;
     }
 
     main {
@@ -1458,27 +1380,21 @@ button {
     }
 
     section {
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 2.5rem;
+        margin-bottom: 3.5rem;
     }
 
     section h2 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         line-height: 1.3;
-        padding: 0 0.8rem;
-        text-align: center;
+        padding: 0 1rem;
     }
-}
 
 
     /* ---------- HEADER ---------- */
 
     .header {
-        width: 100%;
         min-height: auto;
-
-        padding: 1.5rem 0.7rem;
+        padding: 2rem 0.8rem;
     }
 
     .header-contenido {
@@ -1487,7 +1403,7 @@ button {
 
         padding: 1.5rem 1rem;
 
-        border-radius: 22px;
+        border-radius: 25px;
     }
 
     .titulo-cafe {
@@ -1496,45 +1412,28 @@ button {
     }
 
     .titulo-cafe h1 {
-        font-size: clamp(1.8rem, 9vw, 2.3rem);
-        line-height: 1.15;
-
-        overflow-wrap: break-word;
+        font-size: 2.2rem;
+        line-height: 1.2;
     }
 
     .titulo-cafe h2 {
         font-size: 0.7rem;
-        line-height: 1.4;
-
         letter-spacing: 0.08rem;
     }
 
-    .titulo-cafe p {
-        font-size: 0.85rem;
-        line-height: 1.6;
-    }
-
     .imagen-Kitty {
-        display: block;
-
         width: 100%;
-        height: 190px;
+        height: 200px;
 
-        margin: 1rem auto 0;
+        margin-top: 1rem;
 
-        object-fit: cover;
-
-        border-radius: 18px;
+        border-radius: 20px;
     }
 
 
     /* ---------- NAVBAR ---------- */
 
     .navbar {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-
         width: 100%;
 
         display: flex;
@@ -1543,39 +1442,28 @@ button {
 
         flex-wrap: wrap;
 
-        gap: 0.25rem;
+        gap: 0.4rem;
 
-        padding: 0.55rem 0.3rem;
+        padding: 0.7rem 0.4rem;
     }
 
     .navbar a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
         padding: 0.4rem 0.45rem;
 
-        font-size: 0.65rem;
-        line-height: 1;
+        font-size: 0.62rem;
 
-        letter-spacing: 0.02rem;
+        letter-spacing: 0.03rem;
 
         white-space: nowrap;
     }
 
     .enlace-carrito {
-        display: inline-flex;
-        align-items: center;
         gap: 0.2rem;
     }
 
     #contador-carrito {
         min-width: 18px;
         height: 18px;
-
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
 
         padding: 0 4px;
 
@@ -1586,43 +1474,35 @@ button {
     /* ---------- PRESENTACIÓN ---------- */
 
     .presentacion {
-        width: 100%;
         min-height: auto;
 
-        padding: 2.5rem 0.8rem;
+        padding: 3rem 0.8rem;
     }
 
     .presentacion p,
     .frase-cafe {
         width: 100%;
 
-        padding: 1.1rem;
+        padding: 1.2rem;
 
         font-size: 0.85rem;
         line-height: 1.7;
 
         border-radius: 18px;
-
-        overflow-wrap: break-word;
     }
 
 
     /* ---------- MÉTODOS ---------- */
 
     .seccion-metodos {
-        width: 100%;
-        padding: 0 0.7rem;
+        padding: 0 0.8rem;
     }
 
     .seccion-metodos > p {
-        width: 100%;
-
-        padding: 0 0.4rem;
+        padding: 0 0.3rem;
 
         font-size: 0.85rem;
-        line-height: 1.6;
-
-        text-align: center;
+        line-height: 1.7;
     }
 
     .producto {
@@ -1632,161 +1512,317 @@ button {
         display: flex;
         flex-direction: column;
 
-        margin: 1.3rem auto;
-        padding: 1.1rem;
+        margin: 1.5rem auto;
+        padding: 1.2rem;
 
-        gap: 0.7rem;
+        gap: 0.8rem;
 
         border-radius: 20px;
 
-        overflow: hidden;
+        text-align: center;
     }
 
     .producto .imagen-personaje-metodo {
         order: -1;
 
-        display: block;
-
         width: 100%;
-        height: 180px;
+        height: 190px;
 
-        margin: 0 auto 0.5rem;
+        margin: 0 0 0.5rem;
 
-        object-fit: cover;
-
-        border-radius: 16px;
+        border-radius: 20px;
     }
 
     .metodo-titulo {
-        margin: 0;
-
-        font-size: 1.25rem;
+        font-size: 1.3rem;
         line-height: 1.35;
 
-        overflow-wrap: break-word;
+        margin: 0;
     }
 
     .producto > p:not(.precio) {
-        margin: 0;
-
         font-size: 0.85rem;
         line-height: 1.65;
 
-        overflow-wrap: break-word;
+        margin: 0;
     }
 
     .precio {
-        margin: 0.3rem 0;
-
         font-size: 1.15rem;
+        margin: 0.3rem 0;
     }
 
     .boton-agregar {
         width: 100%;
 
-        padding: 0.75rem 1rem;
+        padding: 0.8rem;
 
-        font-size: 0.8rem;
+        margin-top: 0.3rem;
     }
 
 
     /* ---------- PERSONAJES ---------- */
 
     .seccion-personajes {
-        width: 100%;
-        padding: 1.5rem 0.7rem;
+        padding: 0 0.8rem;
     }
 
     .personajes-grid {
         width: 100%;
 
-        display: grid;
-
         grid-template-columns: repeat(2, minmax(0, 1fr));
 
         gap: 0.7rem;
 
-        margin-top: 1.3rem;
+        margin-top: 1.5rem;
     }
 
     .personaje {
         width: 100%;
-        min-width: 0;
 
-        padding: 0.7rem;
+        padding: 0.8rem;
 
-        border-radius: 20px;
-
-        overflow: hidden;
+        border-radius: 25px;
     }
 
     .imagen-personaje {
-        display: block;
-
         width: 100%;
-        height: 110px;
+        height: 120px;
 
-        object-fit: cover;
-
-        border-radius: 14px;
+        object-fit: contain;
     }
 
     .personaje h3 {
-        margin: 0.5rem 0 0.3rem;
+        margin-top: 0.5rem;
 
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.3;
-
-        overflow-wrap: break-word;
     }
 
     .personaje p {
-        margin: 0;
+        font-size: 0.72rem;
+        line-height: 1.5;
+    }
 
-        font-size: 0.7rem;
-        line-height: 1.45;
 
-        overflow-wrap: break-word;
+    /* ---------- ZONA COMPRA ---------- */
+
+    .zona-compra {
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+
+        padding: 2rem 0.8rem;
     }
 
 
     /* ---------- CARRITO ---------- */
 
     .seccion-carrito {
-        width: calc(100% - 1.4rem);
-
-        margin: 1rem auto;
+        width: 100%;
 
         padding: 1.5rem 0.8rem;
 
-        border-radius: 22px;
-
-        overflow: hidden;
+        border-radius: 25px;
     }
 
     #productos-carrito {
-        width: 100%;
         margin-top: 1rem;
     }
 
     .item-carrito {
-        width: 100%;
-
-        display: flex;
         flex-direction: column;
-
-        padding: 0.8rem;
 
         text-align: center;
 
-        gap: 0.5rem;
+        gap: 0.6rem;
 
-        border-radius: 15px;
-
-        overflow-wrap: break-word;
+        padding: 1rem;
     }
 
     .item-carrito h3 {
-        font-size: 0.9rem;
-        margin: 0;
+        font-size: 0.95rem;
     }
+
+    .item-carrito p {
+        font-size: 0.8rem;
+    }
+
+    .resumen-carrito {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .resumen-carrito p {
+        font-size: 0.95rem;
+    }
+
+    #total-carrito {
+        font-size: 1.3rem;
+    }
+
+    #vaciar-carrito,
+    #finalizar-compra {
+        display: block;
+
+        width: 100%;
+
+        margin: 0.5rem 0;
+    }
+
+
+    /* ---------- RESERVAS ---------- */
+
+    .seccion-reservas {
+        width: 100%;
+
+        padding: 1.5rem 0.8rem;
+
+        border-radius: 25px;
+    }
+
+    .seccion-reservas > p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .disponibilidad {
+        width: 100%;
+
+        margin: 1.3rem auto;
+
+        padding: 1rem;
+    }
+
+    #contador-tazas {
+        font-size: 1.2rem;
+    }
+
+    #formulario-reserva {
+        width: 100%;
+        margin-top: 1.2rem;
+    }
+
+    #formulario-reserva label {
+        text-align: center;
+        font-size: 0.75rem;
+    }
+
+    #cantidad {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    #boton-reservar {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer {
+        width: 100%;
+
+        padding: 2.5rem 0.8rem;
+    }
+
+    .footer-contenido {
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 1.5rem;
+    }
+
+    .footer-imagen,
+    .footer-info {
+        width: 100%;
+    }
+
+    .imagen-footer {
+        width: 100%;
+        height: 180px;
+
+        border-radius: 20px;
+    }
+
+    .footer-info h2 {
+        font-size: 1.6rem;
+    }
+
+    .footer-info p {
+        font-size: 0.8rem;
+        line-height: 1.6;
+    }
+
+    .horarios {
+        width: 100%;
+
+        font-size: 0.75rem !important;
+    }
+}
+
+
+/* =========================================================
+   CELULARES MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .titulo-cafe h1 {
+        font-size: 1.9rem;
+    }
+
+    .titulo-cafe h2 {
+        font-size: 0.62rem;
+    }
+
+    .imagen-Kitty {
+        height: 170px;
+    }
+
+    .navbar {
+        gap: 0.2rem;
+    }
+
+    .navbar a {
+        padding: 0.35rem 0.3rem;
+        font-size: 0.56rem;
+    }
+
+    .personajes-grid {
+        gap: 0.5rem;
+    }
+
+    .personaje {
+        padding: 0.6rem;
+    }
+
+    .imagen-personaje {
+        height: 100px;
+    }
+
+    .personaje h3 {
+        font-size: 0.82rem;
+    }
+
+    .personaje p {
+        font-size: 0.65rem;
+    }
+
+    .producto {
+        padding: 1rem;
+    }
+
+    .producto .imagen-personaje-metodo {
+        height: 165px;
+    }
+
+    .metodo-titulo {
+        font-size: 1.15rem;
+    }
+}
