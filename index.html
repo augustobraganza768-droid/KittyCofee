@@ -1,85 +1,513 @@
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KittyCofee</title>
+
+    <title>KittyCoffee ☕🎀</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
-    <header>
-    <h1>KittyCofee<h1>
-    <h2>cafe estilo kawaii</h2>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+    <header class="header">
+
+        <div class="header-contenido">
+
+            <div class="titulo-cafe">
+                <h1>☕KittyCoffee🎀</h1>
+                <h2>Café estilo kawaii</h2>
+                
+            </div>
+
+            <!-- Imagen principal -->
+            <div class="imagen-principal">
+                <img
+                    src="local-kitty.png"
+                    alt="Cafetería KittyCofee estilo Sanrio"
+                    class="imagen-Kitty">
+            </div>
+
+        </div>
+        <link href="https://db.onlinewebfonts.com/c/65a5b392105de544bddd46c34f14314d?family=Gotham-XLight" rel="stylesheet">
+
     </header>
-    <nav>
-        <a href="#metodos">Metodos</a>
+
+
+    <!-- =========================
+         NAVEGACIÓN
+    ========================== -->
+    <nav class="navbar">
+
+        <a href="#inicio">Inicio</a>
+        <a href="#metodos">Métodos</a>
         <a href="#personajes">Personajes</a>
+        <a href="#reservas">Reservas</a>
+
+        <!-- Acceso al carrito -->
+        <a href="#carrito" class="enlace-carrito">
+            🛒 Carrito
+            <span id="contador-carrito">0</span>
+        </a>
+
     </nav>
 
-    <header>
-        <main>
-            <section id="#metodos">
-    <p>Sanrio Coffee es una cafetería temática inspirada en el adorable y colorido universo de Sanrio. 
-        El local está diseñado para transmitir una sensación de alegría, tranquilidad y ternura desde 
-        el momento en que los clientes se acercan a la entrada. Su fachada combina tonos rosados y pasteles,
-         decoraciones de corazones, detalles relacionados con el café y la presencia de personajes como 
-         Hello Kitty, My Melody, Cinnamoroll, Pochacco y Pompompurin.
-El propósito de Sanrio Coffee es ofrecer mucho más que una simple taza de café.
- “Un buen café, un momento especial y un poquito de ternura.” ☕🎀</p>
 
-    <h2>Metodos de preparacion</h2>
-    <h3 class="metodo-titulo">☁️ Cinnamoroll — Café Filtrado Cremoso</h3>
-    <p>Calentar el agua sin dejar que hierva demasiado,
-Colocar el café molido en el filtro,
-Verter el agua lentamente sobre el café,
-Esperar a que el café termine de filtrarse,
-Agregar un poco de leche para darle una textura cremosa,
-Servir caliente y disfrutar.<span class="precio">$10</span></p>
-   <h3 class="metodo-titulo">🎀 Hello Kitty — Café con Leche</h3>
-    <p>Preparar una taza de café.
-Calentar la leche,
-Agregar la leche al café,
-Añadir azúcar al gusto,
-Mezclar suavemente,
-Servir y decorar con un pequeño detalle de espuma.<span class="precio">$15</span></p>
-<h3 class="metodo-titulo">🌸 My Melody — Café Dulce</h3>
-    <p>Preparar una taza de café,
-Agregar una cucharadita de azúcar,
-Incorporar un poco de leche caliente,
-Mezclar hasta integrar todos los ingredientes,
-Espolvorear un poco de cacao por encima,
-Servir caliente.<span class="precio">$10</span></p>
-<h3 class="metodo-titulo">🐶 Pochacco — Café Frío</h3>
-    <p>Preparar una taza de café,
-Agregar una cucharadita de azúcar,
-Incorporar un poco de leche caliente,
-Mezclar hasta integrar todos los ingredientes,
-Espolvorear un poco de cacao por encima,
-Servir caliente.<span class="precio">$10</span></p>
-<h3 class="metodo-titulo">🍮 Pompompurin — Café con Espuma</h3>
-    <p>Preparar una taza de café,
-Agregar una cucharadita de azúcar,
-Incorporar un poco de leche caliente,
-Mezclar hasta integrar todos los ingredientes,
-Espolvorear un poco de cacao por encima,
-Servir con hielo.<span class="precio">$12</span></p>
+    <!-- =========================
+         CONTENIDO PRINCIPAL
+    ========================== -->
+    <main id="inicio">
 
 
+        <!-- =========================
+             PRESENTACIÓN
+        ========================== -->
+        <section class="presentacion">
 
-</section>
-<section id="reservas">
-    <p>Tazas disponibles hoy:<span id="contador-tazas">50</span></p>
-    <button id="boton-reservar">Reservar una taza</button>
-</section>
-</main>
-    
-<footer id="personajes">
-    <img src="local-kitty.png" alt="local kittyCofee" width="250" span class="imagen-Kitty">
-    <p span class="horarios">abierto todos los dias de 00:06am a 20:00pm.</p>
-</footer>
+            <h2>🎀<b>Bienvenidos a KittyCoffee</b> 🎀</h2>
+
+            <p>
+                Kitty Coffee es una cafetería temática inspirada en el
+                adorable y colorido universo de Sanrio. El local está
+                diseñado para transmitir una sensación de alegría,
+                tranquilidad y ternura desde el momento en que los clientes
+                se acercan a la entrada.
+                Nuestra cafetería combina tonos rosados y pasteles,
+                decoraciones de corazones, detalles relacionados con el café
+                y la presencia de personajes como Hello Kitty, My Melody,
+                Cinnamoroll, Pochacco y Pompompurin.
+                El propósito de KittyCofee es ofrecer mucho más que una
+                simple taza de café: queremos crear un pequeño momento
+                especial para cada persona que nos visita.
+            </p>
+
+            <p class="frase-cafe">
+                <b>🎀 “Un buen café, un momento especial y un poquito de
+                ternura.”☕</b>
+            </p>
+
+        </section>
+
+<!-- =========================
+             PERSONAJES
+        ========================== -->
+        <section id="personajes" class="seccion-personajes">
+
+            <h2><b>🎀 Nuestros personajes 🎀</b></h2>
+
+            <p>
+                <i>Cada bebida está inspirada en uno de nuestros adorables
+                personajes.</i>
+            </p>
+
+
+            <div class="personajes-grid">
+
+
+                <!-- Cinnamoroll -->
+                <article class="personaje">
+
+                    <img
+                        src="cinnamoroll.png"
+                        alt="Cinnamoroll"
+                        class="imagen-personaje">
+
+                    <h3>Cinnamoroll ☁️</h3>
+
+                    <p>
+                        <b>Dulce, tranquilo y amante de un buen café cremoso.</b>   
+                    </p>
+
+                </article>
+
+
+                <!-- Hello Kitty -->
+                <article class="personaje">
+
+                    <img
+                        src="kitty.png"
+                        alt="Hello Kitty"
+                        class="imagen-personaje">
+
+                    <h3>Hello Kitty   🎀</h3>
+
+                    <p>
+                        <b>Nuestra anfitriona y fanática del clásico café con
+                        leche.</b>
+                    </p>
+
+                </article>
+
+
+                <!-- My Melody -->
+                <article class="personaje">
+
+                    <img
+                        src="melody.png"
+                        alt="My Melody"
+                        class="imagen-personaje">
+
+                    <h3>My Melody   🌸</h3>
+
+                    <p>
+                        <b>Especialista en bebidas dulces y llenas de ternura.</b>
+                    </p>
+
+                </article>
+
+
+                <!-- Pochacco -->
+                <article class="personaje">
+
+                    <img
+                        src="pocchaco.png"
+                        alt="Pochacco"
+                        class="imagen-personaje">
+
+                    <h3>Pochacco  🐶</h3>
+
+                    <p>
+                        <b>Energía, diversión y un delicioso café frío.</b>
+                    </p>
+
+                </article>
+
+
+                <!-- Pompompurin -->
+                <article class="personaje">
+
+                    <img
+                        src="pompompurin.png"
+                        alt="Pompompurin"
+                        class="imagen-personaje">
+
+                    <h3>Pompompurin 🍮</h3>
+
+                    <p>
+                        <b>Suave, dulce y perfecto para acompañar un café con
+                        espuma.</b>
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+        <!-- =========================
+             MÉTODOS DE PREPARACIÓN
+        ========================== -->
+        <section id="metodos" class="seccion-metodos">
+
+            <h2><b>☕ Métodos de preparación ☕</b></h2>
+
+            <p>
+                <i>Descubre nuestras bebidas inspiradas en los personajes
+                favoritos de Sanrio.
+                </i>
+            </p>
+
+
+            <!-- Cinnamoroll -->
+            <article class="producto">
+
+                <h3 class="metodo-titulo">
+                    ☁️ <b>Cinnamoroll — Café Cremoso</b>
+                </h3>
+
+                <p>
+                    El Cappuccino de Cinnamoroll comienza con una extracción de espresso de tueste medio, procurando obtener una crema consistente y aromas de chocolate y frutos secos. A continuación, se vaporiza leche fresca hasta alcanzar aproximadamente 60–65 °C, incorporando aire de manera controlada para conseguir una microespuma densa y cremosa.
+
+El espresso se combina con la leche caliente manteniendo una proporción equilibrada entre café, leche y espuma. Para finalizar, se agrega una ligera espolvoreada de canela y un pequeño detalle de espuma inspirado en las características orejas de Cinnamoroll.
+
+<b>Perfil: equilibrado, especiado, cremoso y aromático.</b>
+                </p>
+
+                <p class="precio">$10.000ARS</p>
+
+                <button
+                    class="boton-agregar"
+                    data-producto="Café Filtrado Cremoso"
+                    data-precio="10">
+                    🛒 Agregar al carrito
+                </button>
+                <img src="cinnamorollcafe.png" alt="Cinnamoroll" class="imagen-personaje-metodo">
+
+            </article>
+
+
+            <!-- Hello Kitty -->
+            <article class="producto">
+
+                <h3 class="metodo-titulo">
+                    🎀 <b>Hello Kitty — Latte de Vainilla</b>
+                </h3>
+
+                <p>
+                   Para preparar el Latte de Vainilla de Hello Kitty, se comienza con una extracción de espresso utilizando café de tueste medio, buscando obtener un sabor equilibrado y ligeramente dulce, incorporando una pequeña cantidad de jarabe de vainilla para aportar suavidad y aroma.
+
+La leche se texturiza cuidadosamente hasta conseguir una microespuma fina y sedosa. Luego se vierte sobre el espresso, creando una textura cremosa y uniforme. Finalmente, se completa con una delicada decoración de espuma inspirada en Hello Kitty y un pequeño toque de vainilla.
+
+<b>Perfil: suave, cremoso, aromático y ligeramente dulce.</b>
+                </p>
+
+                <p class="precio">$15.000ARS</p>
+
+                <button
+                    class="boton-agregar"
+                    data-producto="Latte de Vainilla"
+                    data-precio="15">
+                    🛒 Agregar al carrito
+                </button>
+                <img src="kittycafe.png" alt="Hello Kitty" class="imagen-personaje-metodo">
+
+            </article>
+
+
+            <!-- My Melody -->
+            <article class="producto">
+
+                <h3 class="metodo-titulo">
+                    🌸 <b>My Melody — Strawberry Latte</b>
+                </h3>
+
+                <p>
+                   El Strawberry Latte de My Melody comienza con una base de puré de frutillas frescas, preparado cuidadosamente para conservar su aroma y acidez natural. Se incorpora una pequeña cantidad de almíbar de frutilla para equilibrar el sabor y se coloca la mezcla en el fondo del vaso.
+
+A continuación, se añade leche fría o ligeramente vaporizada, dependiendo de la versión elegida, creando un contraste visual entre las capas rosadas y blancas. Para finalizar, se incorpora una suave espuma de leche y una decoración de frutilla o pequeños detalles de azúcar inspirados en My Melody.
+
+<b>Perfil: frutal, suave, dulce y refrescante.</b>
+                </p>
+
+                <p class="precio">$10.000ARS</p>
+
+                <button
+                    class="boton-agregar"
+                    data-producto="Strawberry Latte"
+                    data-precio="10">
+                    🛒 Agregar al carrito
+                </button>
+                <img src="melodycafe.png" alt="My Melody" class="imagen-personaje-metodo">
+
+            </article>
+
+
+            <!-- Pochacco -->
+            <article class="producto">
+
+                <h3 class="metodo-titulo">
+                    🐶 <b>Pochacco — Mocca de Chocolate</b>
+                </h3>
+
+                <p>
+                   El Mocha de Chocolate de Pochacco comienza con una extracción de espresso de sabor intenso. Se prepara una base de chocolate utilizando chocolate de buena calidad, que se mezcla cuidadosamente con el espresso hasta obtener una crema homogénea y brillante.
+
+Posteriormente se incorpora leche vaporizada, manteniendo la temperatura entre 60 y 65 °C para preservar su dulzor natural. La bebida se termina con una fina capa de microespuma y una decoración de cacao en polvo o chocolate rallado, creando una presentación sencilla pero atractiva.
+
+<b>Perfil: intenso, chocolatoso, cremoso y ligeramente dulce.</b>
+                </p>
+
+                <p class="precio">$10.000ARS</p>
+
+                <button
+                    class="boton-agregar"
+                    data-producto="Mocha de Chocolate"
+                    data-precio="10">
+                    🛒 Agregar al carrito
+                </button>
+                <img src="pochaccocafe.png" alt="Pochacco" class="imagen-personaje-metodo">
+
+            </article>
+
+
+            <!-- Pompompurin -->
+            <article class="producto">
+
+                <h3 class="metodo-titulo">
+                    🍮 <b>Pompompurin — Caramel Macchiato</b>
+                </h3>
+
+                <p>
+                   Para el Caramel Macchiato de Pompompurin se prepara primero un espresso intenso. En la base de la taza se incorpora una pequeña cantidad de salsa de caramelo, seguida de leche vaporizada hasta obtener una textura suave y aterciopelada.
+
+El espresso se vierte lentamente sobre la leche para conservar las diferentes capas de la bebida. Finalmente, se añade una fina capa de espuma de leche y se decora con hilos de caramelo.
+
+<b>Perfil: dulce, intenso, cremoso y con notas profundas de caramelo.</b>
+                </p>
+
+                <p class="precio">$12.000ARS</p>
+
+                <button
+                    class="boton-agregar"
+                    data-producto="Café con Espuma"
+                    data-precio="12">
+                    🛒 Agregar al carrito
+                </button>
+                <img src="pompomcafe.png" alt="Pompompurin" class="imagen-personaje-metodo">
+
+            </article>
+
+        </section>
+
+<!-- =========================
+     CARRITO + RESERVAS
+========================== -->
+
+<div class="zona-compra">
+        <!-- =========================
+             CARRITO DE COMPRAS
+        ========================== -->
+        <section id="carrito" class="seccion-carrito">
+
+            <h2>🛒 Tu carrito</h2>
+
+            <div id="productos-carrito">
+
+                <p id="carrito-vacio">
+                    Tu carrito está vacío. 💗
+                </p>
+
+            </div>
+
+
+            <div class="resumen-carrito">
+
+                <p>
+                    Productos:
+                    <span id="cantidad-productos">0</span>
+                </p>
+
+                <p>
+                    Total:
+                    $<span id="total-carrito">0</span>
+                </p>
+
+                <button id="vaciar-carrito">
+                    🗑️ Vaciar carrito
+                </button>
+
+                <button id="finalizar-compra">
+                    💳 Finalizar compra
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESERVAS
+        ========================== -->
+        <section id="reservas" class="seccion-reservas">
+
+            <h2>☕ Reserva tu taza</h2>
+
+            <p>
+                <i>Reserva tu café antes de visitarnos y asegúrate de tener
+                tu bebida favorita lista.</i>
+            </p>
+
+
+            <div class="disponibilidad">
+
+                <p>
+                    Tazas disponibles hoy:
+                    <strong id="contador-tazas">50</strong>
+                </p>
+
+            </div>
+
+
+            <form id="formulario-reserva">
+
+                <label for="cantidad">
+                    ¿Cuántas tazas deseas reservar?
+                </label>
+
+                <input
+                    type="number"
+                    id="cantidad"
+                    name="cantidad"
+                    min="1"
+                    max="2"
+                    placeholder="Ej: 1"
+                    required>
+
+                <small>
+                    Máximo 2 tazas por persona.
+                </small>
+
+                <button
+                    type="submit"
+                    id="boton-reservar">
+                    ☕ Reservar mi taza
+                </button>
+
+            </form>
+
+
+            <!-- Respuesta de la reserva -->
+            <div
+                id="respuesta-reserva"
+                class="respuesta-reserva"
+                aria-live="polite">
+            </div>
+
+        </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer class="footer">
+
+        <div class="footer-contenido">
+
+            <div class="footer-imagen">
+
+                <img
+                    src="Localinterior2.png"
+                    alt="Decoración de KittyCofee"
+                    class="imagen-footer">
+
+            </div>
+
+
+            <div class="footer-info">
+
+                <h2><b>KittyCofee ☕🎀</b></h2>
+
+                <p>
+                    <b>Un pequeño café lleno de dulzura, café y personajes
+                    adorables.</b>
+                </p>
+
+                <p class="horarios">
+                    <b>🕐 Abierto todos los días de 06:00 AM a 20:00 PM.</b>    
+                </p>
+
+                <p>
+                    © 2026 KittyCofee — Proyecto de práctica web.
+                </p>
+                <p>augustobraganza</p>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
     <script src="script.js"></script>
-
 </body>
 </html>
+
+

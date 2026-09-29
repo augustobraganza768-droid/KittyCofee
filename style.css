@@ -1,140 +1,1004 @@
-body {
-    margin: 0;
-    background-color:#ffe5ec;
-    font-family:Crafty Girls, cursive;
-    color:#f26a8d;
-    min-height: 100vh;
-}
-h1 {
-    color:#d972ff;
-    font-size: 2.9rem;
-    text-align: center;
-    margin: 1rem 0;
-    text-shadow: 2px 2px 0 #ffffff;
+/* =========================================================
+   KITTYCOFEE
+   Estilo inspirado en Hello Kitty Café
+========================================================= */
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+@import url(https://db.onlinewebfonts.com/c/65a5b392105de544bddd46c34f14314d?family=Gotham-XLight);
+@font-face {
+    font-family: "Gotham-XLight";
+    src: url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.eot");
+    src: url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/65a5b392105de544bddd46c34f14314d.svg#Gotham-XLight")format("svg");
 }
 
-header {
-    padding:1.5rem 2rem;
-    border-bottom:1px solid #9046cf;
-      background-color: rgba(255, 255, 255, 0.45);
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: lch(100% 0.01 296.81);
+    color: #333333;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.header {
+    position: relative;
+
+    min-height: 500px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4rem 2rem;
+
+    background-image:
+        linear-gradient(
+            rgba(224, 5, 115, 0.397),
+            rgba(15, 6, 10, 0.733)
+        ),
+        url("local-kitty.png");
+
+    background-size: cover;
+    background-position: center;
+
+    border-bottom: 1px solid #eeeeee;
+
     text-align: center;
 }
-nav {
+
+.header-contenido {
+        position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+
+    padding: 2.5rem;
+
+    background-color: rgba(253, 248, 248, 0.685);
+
+    border-radius: 35px;
+
+    box-shadow: 0 10px 35px rgb(0, 0, 0);
+
+}
+
+.titulo-cafe {
+    flex: 1;
+    text-align: left;
+}
+
+.titulo-cafe h1 {
+     margin: 0 0 0.5rem;
+
+    color: #ec6f91;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 4rem;
+}
+
+.titulo-cafe h2 {
+    color: #555555;
+
+     text-align: center;
+
+    font-size: 1rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.20rem;
+}
+
+
+/* =========================
+   IMAGEN PRINCIPAL
+========================= */
+
+.imagen-principal {
+    flex: 1;
+
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1rem;
 }
-nav a {
-    color:#d16bf7;
-text-decoration: none;
+
+.imagen-Kitty {
+    display: block;
+
+    width: 430px;
+    max-width: 100%;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 30px;
+
+    box-shadow: 0 10px 25px rgba(144, 70, 207, 0.2);
+
+    transition: transform 0.4s ease;
+}
+
+.imagen-Kitty:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.navbar {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 4rem;
+
+    padding: 1rem 1.5rem;
+
+    background-color: rgba(255, 255, 255, 0.92);
+
+    border-bottom: 1px solid #d972ff;;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.navbar a {
+    position: relative;
+
+    padding: 0.4rem 2;
+
+    color: #333333;
+
+    text-decoration: none;
+
+    font-size: 0.85rem;
     font-weight: bold;
-    transition: 0.3s ease;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.13rem;
+
+    transition: color 0.3s ease;
 }
-nav a:hover {
-    color: #9046cf;
-    transform: scale(1.1);
+
+.navbar a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: #ec6f91;
+
+    transition: width 0.3s ease;
 }
+
+.navbar a:hover {
+    color: #ec6f91;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   CARRITO EN NAV
+========================= */
+
+.enlace-carrito {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+#contador-carrito {
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    min-width: 22px;
+    height: 22px;
+
+    padding: 0 6px;
+
+    border-radius: 50%;
+
+    background-color: #fcabc1;
+
+    color: #f7f4f6;
+
+    font-size: 0.75rem;
+}
+
+
+/* =========================
+   CONTENIDO PRINCIPAL
+========================= */
+
 main {
-    padding: 3rem 2rem;
-    max-widht: 800px;
+    width: 100%;
+    max-width: 1590px;
+
     margin: 0 auto;
+
+    padding: 0rem 0rem;
+}
+
+section {
+    margin-bottom: 8rem;
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+section h2 {
+    margin-bottom: 1rem;
+
+    color: #e965c1;
+
+    text-align: center;
+
+    font-family: "Georgia", "Times New Roman", serif;
+
+    font-size: 2.4rem;
+
+    font-weight: normal;
+
+    letter-spacing: 0.03em;
+}
+
+section > p {
+    line-height: 1.8;
+    color: #ec3490;
+}
+
+
+/* =========================
+   PRESENTACIÓN
+========================= */
+
+.presentacion {
+
+   position: relative; 
+   
+
+
+   min-height: 500px; 
+   
+   padding: 4rem 0rem; 
+   /* Imagen de fondo */ 
+   background-image: linear-gradient( 
+
+    rgba(255, 255, 255, 0),
+     rgb(255, 252, 253)
+      ), 
+
+      url("nubesfondometodos.png");
+      
+      background-size: cover; 
+
+      background-position: center; 
+
+      background-repeat: no-repeat; 
+      
+      display: flex; 
+      
+      flex-direction: column; 
+      
+      align-items: center; 
+      
+      justify-content: center; 
+      
+      text-align: center;
+
+     }
+    
+
+.presentacion p, 
+.frase-cafe { 
+    position: relative; 
+    max-width: 750px; 
+    
+    padding: 2rem 3rem; 
+    /* Marco blanco transparente */ 
+    background-color: 
+    rgba(255, 255, 255, 0.637); 
+    border: 1px solid 
+    rgba(185, 172, 180, 0.95); 
+    box-shadow: 0 10px 30px 
+    rgba(114, 5, 87, 0.534); 
+    color: #555555; line-height: 1.8;
+     border-radius: 25px;
+ }
+
+.frase-cafe {
+   margin-top: 1rem; 
+   
+   color: #ec6f91; 
+   
+   font-family: Georgia, "Times New Roman", serif; 
+   
+   font-size: 1rem; 
+   
+   line-height: 1.5;
+}
+
+
+/* =========================
+   MÉTODOS DE PREPARACIÓN
+========================= */
+
+.seccion-metodos {
+   text-align: center; 
+   padding: 0rem 2rem; 
+   border-top: 1px solid #ffffff00;
+
+}
+.seccion-metodos > h2 { 
+    margin-bottom: 1rem; 
+    color: #ec6f91; 
+    font-family: Georgia, "Times New Roman", serif; 
+    font-size: 2.5rem; 
+}
+
+.seccion-metodos > p {
+   max-width: 750px; 
+   margin: 0 auto 3rem; 
+   color: #300118; 
+   line-height: 1.8; 
+}
+
+
+/* =========================
+   TARJETAS DE PRODUCTOS
+========================= */
+
+.producto {
+     background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.562),
+            rgba(255, 255, 255, 0.568)
+        ),
+        url("nubesfondometodos.png");
+
+  max-width: 1100px;
+    margin: 3rem auto;
+    padding: 2.8rem;
+    
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    grid-template-rows: auto auto auto;
+    column-gap: 4rem;
+    
+    align-items: start;
+    text-align: left;
+
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.producto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
 }
 
 .metodo-titulo {
-    font-size: 1.1rem;
-  letter-spacing: 0.05rem;
-  text-transform: uppercase;
-  margin-bottom:0.25rem;
-  color:#9046cf;
+    grid-column: 1;
+    grid-row: 1;
+
+    margin: 0 0 1.5rem;
+
+    color: #ec6f91;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 1.8rem;
+    line-height: 1.4;
 }
+
+.producto p {
+    .producto > p:not(.precio) {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin: 0;
+
+    color: #555555;
+
+    font-size: 1rem;
+    line-height: 1.9;
+}
+
+
+/* Perfil dentro de la descripción */
+
+.producto > p:not(.precio) b {
+    color: #444444;
+}
+}
+
+/* =========================
+   PRECIO
+========================= */
+
 .precio {
-    font-weight:bold;
-    color:#9046cf;
-    font-size: 1.2rem;
-}
-footer {
-    font-size: 1.0rem;
-    color:#2e294e;
-    font-family: Georgia, serif;
-}
-.imagen-Kitty {
-display: block;
-    width: 180px;
-    max-width: 80%;
-    margin: 2rem auto;
-    transition: 0.4s ease;
-}
-.imagen-Kitty:hover {
-    transform: scale(1.08) rotate(-3deg);
-}
-
-.horarios { 
-    margin: 30px auto;
-    max-width: 500px;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(144, 70, 207, 0.15);
-    text-align: center;
-}
-#contador-tazas {
-   font-size: 1.8rem;
+    grid-column: 1; 
+    grid-row: 3; 
+    margin: 1.8rem 0 0; 
+    color: #ec6f91; 
+    font-size: 1.35rem; 
     font-weight: bold;
-    color: #ff7edb;
-    background-color: #ffffff;
-    padding: 0.4rem 1rem;
-    border-radius: 15px;
-    display: inline-block;
-    box-shadow: 0 4px 10px rgba(255, 126, 219, 0.2);
+ }
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-#boton-reservar {
-     display: block;
-    margin: 1.5rem auto 0;
-    padding: 0.7rem 1.5rem;
-    
-    background: linear-gradient(
-        135deg,
-        #d972ff,
-        #9046cf
-    );
+.boton-agregar {
+   grid-column: 1;
+    grid-row: 4;
 
-    color: #ffffff;
+    justify-self: start;
+
+    margin-top: 1.2rem;
+
+    padding: 0.85rem 1.5rem;
+
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
 
-    font-family: "Crafty Girls", cursive;
-    font-size: 1.1rem;
+    background-color: #ec6f91;
+    color: white;
+
+    font-size: 0.95rem;
     font-weight: bold;
 
     cursor: pointer;
 
-    box-shadow: 0 6px 15px rgba(144, 70, 207, 0.3);
-
-    transition: all 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
 }
-/* Efecto al pasar el mouse */
 
-#boton-reservar:hover {
-    transform: translateY(-3px) scale(1.05);
+.boton-agregar:hover {
+    background-color: #d9577c;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 15px rgba(236, 111, 145, 0.3);
+}
+
+.boton-agregar:active {
+    transform: scale(0.97);
+}
+/* ========================= IMAGEN DEL CAFÉ ========================= */ 
+.producto .imagen-personaje-metodo {
+    grid-column: 2;
+    grid-row: 1 / 5;
+
+    width: 100%;
+    height: 310px;
+
+    object-fit: cover;
+
+    border-radius: 35px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.producto:hover .imagen-personaje-metodo {
+    transform: scale(1.02);
 
     box-shadow:
-        0 8px 20px rgba(144, 70, 207, 0.4);
+        0 12px 30px rgba(0, 0, 0, 0.14);
 }
-/* Efecto al hacer click */
-#boton-reservar:active {
-    transform: scale(0.95);
-}
+
+
 /* =========================
-   BOTON SIN CUPOS
+   PERSONAJES
 ========================= */
 
+.seccion-personajes {
+    text-align: center;
+
+    padding: 0rem 2rem;
+
+    background-color: #ffffff;
+
+    border-top: 1px solid #fffffffb;
+
+    border-bottom: 1px solid #ffffff9a;
+    
+}
+
+.personajes-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(190px, 1fr));
+
+    gap: 1.5rem;
+
+    margin-top: 3rem;
+}
+
+.personaje {
+    padding: 1.5rem;
+
+    background-color: #fffdfe;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 5rem;
+
+    box-shadow: 0 5px 20px rgba(95, 7, 83, 0.589);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.personaje:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 12px 25px rgb(163, 0, 76);
+}
+
+.imagen-personaje {
+    width: 100%;
+    height: 190px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 1rem;
+
+    transition: transform 0.4s ease;
+}
+
+.personaje:hover .imagen-personaje {
+    transform: scale(1.04);
+}
+
+
+.personaje h3 {
+    margin-top: 1rem;
+
+    color: #000000;
+
+    font-family: Crafty Girls, cursive;
+
+    font-size: 1.3rem;
+
+    font-weight: normal;
+}
+
+.personaje p {
+    color: #f13ecb;
+
+    line-height: 1.6;
+}
+/* ========================================
+   CARRITO + RESERVAS
+======================================== */
+
+.zona-compra {
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    padding: 5rem 2rem;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2rem;
+
+    align-items: stretch;
+}
+
+
+/* =========================
+   CARRITO
+========================= */
+
+.seccion-carrito {
+    padding: 3rem 2rem;
+
+    background-color: #f885c856;
+
+    border: 1px solid #ffb9f6;
+
+    border-radius: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+#productos-carrito {
+    margin-top: 2rem;
+}
+
+#carrito-vacio {
+    padding: 2rem;
+
+    color: #777777;
+
+    text-align: center;
+
+    font-size: 1rem;
+}
+
+
+/* =========================
+   PRODUCTOS DENTRO DEL CARRITO
+========================= */
+
+.item-carrito {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding: 1.2rem;
+
+    margin-bottom: 0.8rem;
+
+    background-color: #fffafa;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 10px;
+}
+
+.item-carrito h3 {
+    margin: 0;
+
+    color: #333333;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-weight: normal;
+}
+
+.item-carrito p {
+    margin: 0.3rem 0;
+
+    color: #777777;
+}
+
+
+/* =========================
+   RESUMEN DEL CARRITO
+========================= */
+
+.resumen-carrito {
+    margin-top: 2rem;
+
+    padding-top: 1.5rem;
+
+    border-top: 1px solid #eeeeee;
+
+    text-align: center;
+}
+
+.resumen-carrito p {
+    color: #555555;
+
+    font-size: 1.1rem;
+
+    font-weight: bold;
+}
+
+#total-carrito {
+    color: #ec6f91;
+
+    font-size: 1.5rem;
+}
+
+
+/* =========================
+   BOTONES DEL CARRITO
+========================= */
+
+#vaciar-carrito,
+#finalizar-compra {
+    padding: 0.75rem 1.4rem;
+
+    margin: 0.5rem;
+
+    border-radius: 2px;
+
+    font-size: 0.8rem;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+
+    border-radius: 10px;
+}
+
+#vaciar-carrito {
+    background-color: #ffffff;
+
+    color: #555555;
+
+    border: 1px solid #cccccc;
+}
+
+#finalizar-compra {
+    background-color: #ec6f91;
+
+    color: #ffffff;
+}
+
+#vaciar-carrito:hover {
+    background-color: #f7f7f7;
+}
+
+#finalizar-compra:hover {
+    background-color: #d9567c;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(236, 111, 145, 0.25);
+}
+
+
+/* =========================
+   RESERVAS
+========================= */
+
+.seccion-reservas {
+    padding: 3rem 2rem;
+
+    text-align: center;
+
+    background-color: #f891ea5d;
+
+    border: 1px solid #e0ccd9c7;
+
+    border-radius: 35px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+.disponibilidad {
+    max-width: 500px;
+
+    margin: 2rem auto;
+
+    padding: 1.3rem;
+
+    background-color: #f8f4f8;
+
+    border: 1px solid #eeeeee;
+
+    border-radius: 10px;
+}
+
+#contador-tazas {
+    display: inline-block;
+
+    margin-left: 0.4rem;
+
+    padding: 0.4rem 1rem;
+
+    color: #ec6f91;
+
+    background-color: #ffffff;
+
+    border: 1px solid #f2b6c6;
+
+    border-radius: 10px;
+
+    font-size: 1.5rem;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FORMULARIO DE RESERVA
+========================= */
+
+#formulario-reserva {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 0.8rem;
+
+    max-width: 450px;
+
+    margin: 2rem auto 0;
+}
+
+#formulario-reserva label {
+    color: #333333;
+
+    font-size: 0.9rem;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+}
+
+#cantidad {
+    width: 100%;
+
+    padding: 0.85rem 1rem;
+
+    background-color: #ffffff;
+
+    color: #333333;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 10px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 1rem;
+
+    text-align: center;
+
+    outline: none;
+}
+
+#cantidad:focus {
+    border-color: #ec6f91;
+
+    box-shadow: 0 0 0 3px rgba(236, 111, 145, 0.1);
+}
+
+#formulario-reserva small {
+    color: #777777;
+}
+
+
+/* =========================
+   BOTÓN RESERVAR
+========================= */
+
+#boton-reservar {
+    display: block;
+
+    margin: 1rem auto 0;
+
+    padding: 0.85rem 2rem;
+
+    background-color: #ec6f91;
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    font-size: 0.85rem;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.07em;
+}
+
+#boton-reservar:hover {
+    background-color: #d9567c;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 18px rgba(236, 111, 145, 0.25);
+}
+
+#boton-reservar:active {
+    transform: scale(0.97);
+}
+
 #boton-reservar:disabled {
-    background: #aaa;
+    background-color: #aaaaaa;
+
     cursor: not-allowed;
+
     transform: none;
+
     box-shadow: none;
+}
+
+
+/* =========================
+   RESPUESTA DE RESERVA
+========================= */
+
+.respuesta-reserva {
+    min-height: 30px;
+
+    margin-top: 1.5rem;
+
+    color: #ec6f91;
+
+    font-weight: bold;
 }
 
 
@@ -142,50 +1006,687 @@ display: block;
    FOOTER
 ========================= */
 
-footer {
-    margin-top: 3rem;
-    padding: 1.5rem;
+.footer {
+    margin-top: 0;
 
-    font-size: 1rem;
-    color: #2e294e;
+    padding: 4rem 1.5rem;
 
-    font-family: Georgia, serif;
+    background-color: rgba(65, 31, 66, 0.92);
+
+    color: #ffffff;
 
     text-align: center;
 
-    border-top: 1px solid #d972ff;
-    background-color: rgba(255, 255, 255, 0.4);
+    font-family: Arial, Helvetica, sans-serif;
+     background-image:
+        linear-gradient(
+            rgb(255, 250, 250),
+            rgba(48, 7, 34, 0.562)
+        ),
+        url("localinterior2.png");
+}
+
+.footer-contenido {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 4rem;
+}
+
+.footer-imagen {
+    flex: 1;
+}
+
+.imagen-footer {
+    width: 350px;
+
+    max-width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 25px;
+
+    transition: transform 0.4s ease;
+}
+
+.imagen-footer:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.footer-info {
+    flex: 1;
+}
+
+.footer-info h2 {
+    margin-bottom: 1rem;
+
+    color: #f706af;
+
+    font-family: times new roman, serif;
+
+    font-size: 2rem;
+
+    font-weight: normal;
+}
+
+.footer-info p {
+    color: #180011;
+
+    line-height: 1.7;
+}
+
+.horarios {
+    max-width: 500px;
+
+    margin: 1.5rem auto;
+
+    padding: 1rem;
+
+    background-color: rgba(253, 250, 250, 0.863);
+
+    border: 1px solid rgba(255, 255, 255, 0.87);
+
+    border-radius: 2px;
+
+    text-align: center;
 }
 
 
 /* =========================
-   RESPONSIVE - CELULAR
+   DETALLES DECORATIVOS
 ========================= */
 
-@media (max-width: 600px) {
+.presentacion::before,
+.seccion-metodos::before,
+.seccion-personajes::before {
+    content: "♡";
 
-    h1 {
-        font-size: 2.2rem;
+    display: block;
+
+    margin-bottom: 0.8rem;
+
+    color: #ec6f91;
+
+    font-size: 1.5rem;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    /* ---------- HEADER ---------- */
+
+    .header {
+        min-height: auto;
+        padding: 3rem 1rem;
     }
 
-    main {
-        padding: 2rem 1rem;
+    .header-contenido {
+        max-width: 90%;
+        padding: 2rem 1.5rem;
+    }
+
+    .titulo-cafe {
+        text-align: center;
+    }
+
+    .titulo-cafe h1 {
+        font-size: 2.8rem;
+    }
+
+    .titulo-cafe h2 {
+        font-size: 0.9rem;
     }
 
     .imagen-Kitty {
-        width: 150px;
+        width: 100%;
+        max-width: 500px;
+        height: 280px;
     }
 
-    .horarios {
-        margin: 20px auto;
+
+    /* ---------- NAVEGACIÓN ---------- */
+
+    .navbar {
+        gap: 1.5rem;
+        padding: 0.8rem 1rem;
     }
 
-    nav {
+    .navbar a {
+        font-size: 0.75rem;
+    }
+
+
+    /* ---------- CONTENIDO ---------- */
+
+    main {
+        width: 100%;
+        padding: 0;
+    }
+
+    section {
+        margin-bottom: 4rem;
+    }
+
+
+    /* ---------- MÉTODOS ---------- */
+
+    .seccion-metodos {
+        padding: 0 1rem;
+    }
+
+    .producto {
+        max-width: 650px;
+
+        display: flex;
         flex-direction: column;
+
+        padding: 2rem;
+        margin: 2rem auto;
+        gap: 1rem;
+
+        text-align: center;
+    }
+
+    .metodo-titulo {
+        margin-bottom: 0.5rem;
+        font-size: 1.6rem;
+    }
+
+    .producto > p:not(.precio) {
+        margin: 0;
+        line-height: 1.7;
+    }
+
+    .producto .imagen-personaje-metodo {
+        order: -1;
+
+        width: 100%;
+        height: 260px;
+        margin-bottom: 1rem;
+    }
+
+    .precio {
+        margin: 0.5rem 0;
+    }
+
+    .boton-agregar {
+        align-self: center;
+        margin-top: 0.5rem;
+    }
+
+
+    /* ---------- PERSONAJES ---------- */
+
+    .seccion-personajes {
+        padding: 2rem 1rem;
+    }
+
+    .personajes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .personaje {
+        padding: 1rem;
+        border-radius: 2rem;
+    }
+
+    .imagen-personaje {
+        height: 150px;
+    }
+
+    .personaje h3 {
+        font-size: 1.1rem;
+    }
+
+    .personaje p {
+        font-size: 0.9rem;
+    }
+
+
+    /* ---------- CARRITO ---------- */
+
+    .seccion-carrito {
+        margin: 1rem;
+        padding: 2rem 1rem;
+        border-radius: 25px;
+    }
+
+    .item-carrito {
+        flex-direction: column;
+        text-align: center;
         gap: 0.7rem;
+    }
+
+    .resumen-carrito {
+        margin-top: 1rem;
+    }
+
+    #vaciar-carrito,
+    #finalizar-compra {
+        width: 80%;
+        margin: 0.4rem auto;
+    }
+
+
+    /* ---------- RESERVAS ---------- */
+
+    .seccion-reservas {
+        margin: 1rem;
+        padding: 2rem 1rem;
+        border-radius: 25px;
+    }
+
+    #formulario-reserva {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    #cantidad {
+        width: 100%;
     }
 
     #boton-reservar {
         width: 80%;
     }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer {
+        padding: 3rem 1rem;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-imagen,
+    .footer-info {
+        width: 100%;
+    }
+
+    .imagen-footer {
+        width: 100%;
+        max-width: 450px;
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* ---------- GENERAL ---------- */
+
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+
+    main {
+        width: 100%;
+        padding: 0;
+    }
+
+    section {
+        margin-bottom: 3rem;
+    }
+
+    section h2 {
+        font-size: 1.8rem;
+        padding: 0 1rem;
+    }
+
+
+    /* ---------- HEADER ---------- */
+
+    .header {
+        min-height: auto;
+        padding: 2rem 0.8rem;
+    }
+
+    .header-contenido {
+        width: 100%;
+        max-width: 100%;
+        padding: 1.5rem 1rem;
+        border-radius: 25px;
+    }
+
+    .titulo-cafe h1 {
+        font-size: 2.1rem;
+    }
+
+    .titulo-cafe h2 {
+        font-size: 0.75rem;
+        letter-spacing: 0.12rem;
+    }
+
+    .titulo-cafe p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .imagen-Kitty {
+        width: 100%;
+        height: 200px;
+        border-radius: 20px;
+    }
+
+
+    /* ---------- NAVBAR ---------- */
+
+    .navbar {
+        position: sticky;
+        top: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        gap: 0.4rem;
+
+        padding: 0.7rem 0.4rem;
+    }
+
+    .navbar a {
+        padding: 0.35rem 0.4rem;
+
+        font-size: 0.65rem;
+        letter-spacing: 0.04rem;
+    }
+
+    .enlace-carrito {
+        gap: 0.2rem;
+    }
+
+    #contador-carrito {
+        min-width: 18px;
+        height: 18px;
+        padding: 0 4px;
+        font-size: 0.65rem;
+    }
+
+
+    /* ---------- PRESENTACIÓN ---------- */
+
+    .presentacion {
+        min-height: auto;
+        padding: 3rem 1rem;
+    }
+
+    .presentacion p,
+    .frase-cafe {
+        width: 100%;
+        padding: 1.3rem;
+
+        font-size: 0.9rem;
+        line-height: 1.7;
+
+        border-radius: 18px;
+    }
+
+
+    /* ---------- MÉTODOS ---------- */
+
+    .seccion-metodos {
+        padding: 0 0.8rem;
+    }
+
+    .seccion-metodos > p {
+        padding: 0 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .producto {
+        width: 100%;
+        max-width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        margin: 1.5rem auto;
+        padding: 1.3rem;
+
+        gap: 0.8rem;
+
+        border-radius: 20px;
+    }
+
+    .producto .imagen-personaje-metodo {
+        width: 100%;
+        height: 200px;
+
+        order: -1;
+
+        border-radius: 20px;
+    }
+
+    .metodo-titulo {
+        font-size: 1.35rem;
+        line-height: 1.4;
+    }
+
+    .producto > p:not(.precio) {
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+    .precio {
+        font-size: 1.2rem;
+        margin: 0.3rem 0;
+    }
+
+    .boton-agregar {
+        width: 100%;
+        padding: 0.8rem 1rem;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* ---------- PERSONAJES ---------- */
+
+    .seccion-personajes {
+        padding: 2rem 0.8rem;
+    }
+
+    .personajes-grid {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+    }
+
+    .personaje {
+        padding: 0.8rem;
+
+        border-radius: 25px;
+    }
+
+    .imagen-personaje {
+        width: 100%;
+        height: 120px;
+    }
+
+    .personaje h3 {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .personaje p {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+
+    /* ---------- CARRITO ---------- */
+
+    .seccion-carrito {
+        width: calc(100% - 1.6rem);
+
+        margin: 1rem 0.8rem;
+        padding: 2rem 1rem;
+
+        border-radius: 25px;
+    }
+
+    #productos-carrito {
+        margin-top: 1rem;
+    }
+
+    .item-carrito {
+        flex-direction: column;
+
+        padding: 1rem;
+
+        text-align: center;
+        gap: 0.5rem;
+
+        border-radius: 15px;
+    }
+
+    .item-carrito h3 {
+        font-size: 1rem;
+    }
+
+    .item-carrito p {
+        font-size: 0.85rem;
+    }
+
+    .resumen-carrito {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .resumen-carrito p {
+        font-size: 1rem;
+    }
+
+    #total-carrito {
+        font-size: 1.3rem;
+    }
+
+    #vaciar-carrito,
+    #finalizar-compra {
+        display: block;
+
+        width: 100%;
+
+        margin: 0.5rem 0;
+        padding: 0.8rem;
+
+        font-size: 0.75rem;
+    }
+
+
+    /* ---------- RESERVAS ---------- */
+
+    .seccion-reservas {
+        width: calc(100% - 1.6rem);
+
+        margin: 1rem 0.8rem;
+        padding: 2rem 1rem;
+
+        border-radius: 25px;
+    }
+
+    .seccion-reservas > p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .disponibilidad {
+        width: 100%;
+        margin: 1.5rem auto;
+        padding: 1rem;
+    }
+
+    #contador-tazas {
+        font-size: 1.2rem;
+    }
+
+    #formulario-reserva {
+        width: 100%;
+        margin-top: 1.5rem;
+    }
+
+    #formulario-reserva label {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+
+    #cantidad {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+    #formulario-reserva small {
+        font-size: 0.75rem;
+    }
+
+    #boton-reservar {
+        width: 100%;
+        padding: 0.8rem;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    .footer {
+        padding: 2.5rem 1rem;
+    }
+
+    .footer-contenido {
+        flex-direction: column;
+
+        gap: 1.5rem;
+    }
+
+    .footer-imagen,
+    .footer-info {
+        width: 100%;
+    }
+
+    .imagen-footer {
+        width: 100%;
+        height: 180px;
+
+        border-radius: 20px;
+    }
+
+    .footer-info h2 {
+        font-size: 1.6rem;
+    }
+
+    .footer-info p {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .horarios {
+        width: 100%;
+        font-size: 0.8rem !important;
+    }
+
 }
